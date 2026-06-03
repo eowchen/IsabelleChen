@@ -1266,6 +1266,151 @@ body::before {
   line-height: 1.6;
 }
 
+.about-inline-photo {
+  margin: 24px 0 28px;
+}
+
+.about-inline-photo img {
+  width: 100%;
+  max-height: 360px;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.about-photo-caption {
+  display: block;
+  font-size: 0.72rem;
+  color: var(--muted);
+  font-style: italic;
+  margin-top: 8px;
+  letter-spacing: 0.03em;
+}
+
+/* Achievements grid — expand to fit 8 items */
+.achievements-grid {
+  grid-template-columns: 1fr 1fr;
+}
+
+/* ── PRESS PHOTOS & SUPPORT BOX ── */
+.press-section-head {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 40px 0 16px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+}
+
+.press-photo-full {
+  margin: 32px 0;
+}
+
+.press-photo-full img {
+  width: 100%;
+  max-height: 480px;
+  object-fit: cover;
+}
+
+.press-photo-caption {
+  display: block;
+  font-size: 0.72rem;
+  color: var(--muted);
+  letter-spacing: 0.05em;
+  margin-top: 8px;
+  font-style: italic;
+}
+
+.press-photo-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 28px 0;
+}
+
+.press-photo-item img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.press-photo-side {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  align-items: start;
+  margin: 28px 0;
+}
+
+.press-photo-side-img img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.press-photo-side-text p {
+  font-size: 0.9rem;
+  color: #c0beb8;
+  line-height: 1.85;
+  margin-bottom: 16px;
+}
+
+/* Override first-letter drop cap for subsequent paragraphs */
+.press-photo-side-text p::first-letter,
+.press-section-head + p::first-letter { 
+  font-size: inherit;
+  float: none;
+  margin: 0;
+  color: inherit;
+  font-family: inherit;
+}
+
+.press-support-box {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--border);
+  margin: 28px 0;
+}
+
+.press-support-option {
+  background: var(--bg-2);
+  padding: 28px;
+}
+
+.press-support-label {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 12px;
+}
+
+.press-support-option p {
+  font-size: 0.85rem;
+  color: var(--off-white);
+  line-height: 1.7;
+  margin-bottom: 0;
+}
+
+.press-support-option p::first-letter {
+  font-size: inherit;
+  float: none;
+  margin: 0;
+  color: inherit;
+  font-family: inherit;
+}
+
+@media (max-width: 768px) {
+  .press-photo-grid { grid-template-columns: 1fr; }
+  .press-photo-side { grid-template-columns: 1fr; }
+  .press-support-box { grid-template-columns: 1fr; }
+}
+
 /* ── CONTACT HERO PHOTO ── */
 .contact-hero {
   position: relative;
