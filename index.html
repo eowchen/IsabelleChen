@@ -688,28 +688,28 @@
     <div class="contact-form-wrap">
       <h2>Send a Message</h2>
 
-      <div data-fs-success style="display:none; padding: 20px; background: var(--bg-2); border: 1px solid var(--accent); color: var(--accent); font-size: 0.85rem; letter-spacing: 0.05em; margin-bottom: 20px;">
+      <div id="form-success" style="display:none; padding: 20px; background: var(--bg-2); border: 1px solid var(--accent); color: var(--accent); font-size: 0.85rem; letter-spacing: 0.05em; margin-bottom: 20px;">
         ✓ Message sent — we'll be in touch within 48 hours.
       </div>
-      <div data-fs-error style="display:none; padding: 20px; background: var(--bg-2); border: 1px solid #c0392b; color: #c0392b; font-size: 0.85rem; margin-bottom: 20px;"></div>
+      <div id="form-error" style="display:none; padding: 20px; background: var(--bg-2); border: 1px solid #c0392b; color: #c0392b; font-size: 0.85rem; margin-bottom: 20px;">
+        Something went wrong. Please email us directly at eow@chefalexchen.com
+      </div>
 
       <form id="contact-form">
 
         <div class="form-field">
-          <label for="name">Your Name</label>
-          <input type="text" id="name" name="name" placeholder="First and last name" data-fs-field required>
-          <span data-fs-error="name" style="color: #c0392b; font-size: 0.75rem;"></span>
+          <label for="fname">Your Name</label>
+          <input type="text" id="fname" name="name" placeholder="First and last name" required>
         </div>
 
         <div class="form-field">
-          <label for="email">Email Address</label>
-          <input type="email" id="email" name="email" placeholder="your@email.com" data-fs-field required>
-          <span data-fs-error="email" style="color: #c0392b; font-size: 0.75rem;"></span>
+          <label for="femail">Email Address</label>
+          <input type="email" id="femail" name="email" placeholder="your@email.com" required>
         </div>
 
         <div class="form-field">
-          <label for="reason">Reason for Contact</label>
-          <select id="reason" name="reason" data-fs-field>
+          <label for="freason">Reason for Contact</label>
+          <select id="freason" name="reason">
             <option value="">Select one...</option>
             <option value="media">Media / Press Inquiry</option>
             <option value="sponsorship">Sponsorship Opportunity</option>
@@ -719,20 +719,62 @@
         </div>
 
         <div class="form-field">
-          <label for="message">Message</label>
-          <textarea id="message" name="message" placeholder="Tell us what's on your mind..." data-fs-field required></textarea>
-          <span data-fs-error="message" style="color: #c0392b; font-size: 0.75rem;"></span>
+          <label for="fmessage">Message</label>
+          <textarea id="fmessage" name="message" placeholder="Tell us what's on your mind..." required></textarea>
         </div>
 
-        <button type="submit" class="form-submit" data-fs-submit-btn>Send Message</button>
+        <button type="submit" class="form-submit" id="form-btn">Send Message</button>
         <p class="form-note">Usually replies within 48 hours.</p>
       </form>
 
       <script>
-        window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
-        formspree('initForm', { formElement: '#contact-form', formId: 'xnjyqqlq' });
+        (function() {
+          var form = document.getElementById('contact-form');
+          var btn = document.getElementById('form-btn');
+          var success = document.getElementById('form-success');
+          var error = document.getElementById('form-error');
+
+          form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            btn.textContent = 'Sending...';
+            btn.disabled = true;
+            error.style.display = 'none';
+
+            var data = {
+              name: document.getElementById('fname').value,
+              email: document.getElementById('femail').value,
+              reason: document.getElementById('freason').value,
+              message: document.getElementById('fmessage').value
+            };
+
+            fetch('https://formspree.io/f/xnjyqqlq', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+              },
+              body: JSON.stringify(data)
+            })
+            .then(function(res) {
+              if (res.ok) {
+                form.style.display = 'none';
+                success.style.display = 'block';
+              } else {
+                res.json().then(function(json) {
+                  error.style.display = 'block';
+                  btn.textContent = 'Send Message';
+                  btn.disabled = false;
+                });
+              }
+            })
+            .catch(function() {
+              error.style.display = 'block';
+              btn.textContent = 'Send Message';
+              btn.disabled = false;
+            });
+          });
+        })();
       </script>
-      <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
     </div>
 
   </div>
