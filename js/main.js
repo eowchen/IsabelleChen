@@ -93,24 +93,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.style.overflow = '';
   }
 
-  // ── CONTACT FORM ──
-  const form = document.getElementById('contact-form');
-  if (form) {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const btn = form.querySelector('.form-submit');
-      btn.textContent = 'Message Sent ✓';
-      btn.style.background = 'var(--accent)';
-      btn.disabled = true;
-      setTimeout(() => {
-        form.reset();
-        btn.textContent = 'Send Message';
-        btn.style.background = '';
-        btn.disabled = false;
-      }, 3000);
-    });
-  }
-
   // ── SCROLL REVEAL ──
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
