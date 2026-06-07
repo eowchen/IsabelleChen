@@ -1441,6 +1441,102 @@ body::before {
   .press-support-box { grid-template-columns: 1fr; }
 }
 
+.about-photo-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.about-photo-two-col img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+}
+
+.kaya-callout {
+  border: 1px solid var(--border-mid);
+  background: var(--bg-2);
+  padding: 36px;
+  margin: 36px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.kaya-callout::before {
+  content: '🫙';
+  position: absolute;
+  right: 28px;
+  top: 28px;
+  font-size: 2.5rem;
+  opacity: 0.3;
+}
+
+.kaya-label {
+  font-size: 0.62rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 12px;
+}
+
+.kaya-callout h3 {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+  color: var(--white);
+}
+
+.kaya-callout p {
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin: 0;
+}
+
+/* Kaya callout on support page */
+.kaya-support-callout {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--pad) 80px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 40px;
+  align-items: center;
+  border-top: 1px solid var(--border);
+  padding-top: 60px;
+}
+
+.kaya-support-callout img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.kaya-support-text .kaya-label { margin-bottom: 10px; }
+
+.kaya-support-text h3 {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.kaya-support-text p {
+  font-size: 0.88rem;
+  color: var(--off-white);
+  line-height: 1.75;
+  margin-bottom: 16px;
+}
+
+@media (max-width: 768px) {
+  .about-photo-two-col { grid-template-columns: 1fr; }
+  .kaya-support-callout { grid-template-columns: 1fr; }
+}
+
 /* ── CONTACT HERO PHOTO ── */
 .contact-hero {
   position: relative;
