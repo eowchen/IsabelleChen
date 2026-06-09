@@ -1321,6 +1321,81 @@ body::before {
   grid-template-columns: 1fr 1fr;
 }
 
+/* ── MEDIA COVERAGE ── */
+.media-coverage {
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-2);
+}
+
+.media-coverage-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 60px var(--pad);
+}
+
+.media-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+}
+
+.media-card {
+  background: var(--bg);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: background 0.2s;
+  text-decoration: none;
+  color: inherit;
+}
+
+.media-card:hover { background: var(--bg-3); }
+
+.media-card-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.media-card-pub {
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.media-card-date {
+  font-size: 0.7rem;
+  color: var(--muted);
+}
+
+.media-card-headline {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--white);
+  flex: 1;
+}
+
+.media-card-link {
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  transition: color 0.2s;
+}
+
+.media-card:hover .media-card-link { color: var(--accent); }
+
+@media (max-width: 768px) {
+  .media-cards { grid-template-columns: 1fr; }
+  .media-coverage-inner { padding: 40px 24px; }
+}
+
 /* ── PRESS PHOTOS & SUPPORT BOX ── */
 .press-section-head {
   font-family: var(--font-display);
